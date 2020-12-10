@@ -47,6 +47,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
-
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+      // 2
+      guard let urlContext = URLContexts.first else {
+        return
+      }
+        
+        if let rootViewController = window?.rootViewController as? UINavigationController {
+                if let viewController = rootViewController.viewControllers.first as? ViewController {
+                    viewController.importElements(url: urlContext.url)
+                }
+            }
+    }
+    
+    
+    
+    
+    
 }
 
