@@ -21,13 +21,39 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="100" id="HfC-pN-mL3">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="100"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="205" id="HfC-pN-mL3" customClass="TableViewCell" customModule="SharingExtension" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="205"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HfC-pN-mL3" id="uQz-Sa-wfr">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="205"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9sD-of-Hqn">
+                                                    <rect key="frame" x="20" y="11" width="374" height="146"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="146" id="Pdg-OP-Hqg"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="importedText" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WPq-pt-9R2">
+                                                    <rect key="frame" x="156.5" y="165" width="101" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="9sD-of-Hqn" firstAttribute="trailing" secondItem="uQz-Sa-wfr" secondAttribute="trailingMargin" id="5S5-of-Uqu"/>
+                                                <constraint firstItem="9sD-of-Hqn" firstAttribute="leading" secondItem="uQz-Sa-wfr" secondAttribute="leadingMargin" id="Bpx-9C-PZy"/>
+                                                <constraint firstItem="9sD-of-Hqn" firstAttribute="top" secondItem="uQz-Sa-wfr" secondAttribute="topMargin" id="Gad-T6-ya4"/>
+                                                <constraint firstItem="WPq-pt-9R2" firstAttribute="centerX" secondItem="uQz-Sa-wfr" secondAttribute="centerX" id="Un4-ve-Rbj"/>
+                                                <constraint firstItem="WPq-pt-9R2" firstAttribute="top" secondItem="9sD-of-Hqn" secondAttribute="bottom" constant="8" symbolic="YES" id="Xfb-Mr-tVa"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="WPq-pt-9R2" secondAttribute="bottom" constant="8" id="hZx-cx-Kpk"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="myImageView" destination="9sD-of-Hqn" id="teZ-8w-NMV"/>
+                                            <outlet property="myLabel" destination="WPq-pt-9R2" id="aIx-6X-oIP"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -46,6 +72,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="uCy-DB-f7e"/>
+                    <connections>
+                        <outlet property="tableView" destination="y6O-in-HeZ" id="PWC-9A-3Ar"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

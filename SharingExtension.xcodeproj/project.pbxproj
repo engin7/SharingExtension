@@ -16,6 +16,7 @@
 		288BDC4D25836070007620E7 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288BDC4C25836070007620E7 /* ShareViewController.swift */; };
 		288BDC5025836070007620E7 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 288BDC4E25836070007620E7 /* MainInterface.storyboard */; };
 		288BDC5425836070007620E7 /* myExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 288BDC4A25836070007620E7 /* myExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		288BDC7E25838C2C007620E7 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288BDC7D25838C2C007620E7 /* TableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,9 @@
 		288BDC4C25836070007620E7 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		288BDC4F25836070007620E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		288BDC5125836070007620E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		288BDC6525837447007620E7 /* myExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = myExtension.entitlements; sourceTree = "<group>"; };
+		288BDC7A258384FD007620E7 /* SharingExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SharingExtension.entitlements; sourceTree = "<group>"; };
+		288BDC7D25838C2C007620E7 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,9 +100,11 @@
 		2878DFE925826218000BFD59 /* SharingExtension */ = {
 			isa = PBXGroup;
 			children = (
+				288BDC7A258384FD007620E7 /* SharingExtension.entitlements */,
 				2878DFEA25826218000BFD59 /* AppDelegate.swift */,
 				2878DFEC25826218000BFD59 /* SceneDelegate.swift */,
 				2878DFEE25826218000BFD59 /* ViewController.swift */,
+				288BDC7D25838C2C007620E7 /* TableViewCell.swift */,
 				2878DFF025826218000BFD59 /* Main.storyboard */,
 				2878DFF32582621B000BFD59 /* Assets.xcassets */,
 				2878DFF52582621B000BFD59 /* LaunchScreen.storyboard */,
@@ -110,6 +116,7 @@
 		288BDC4B25836070007620E7 /* myExtension */ = {
 			isa = PBXGroup;
 			children = (
+				288BDC6525837447007620E7 /* myExtension.entitlements */,
 				288BDC4C25836070007620E7 /* ShareViewController.swift */,
 				288BDC4E25836070007620E7 /* MainInterface.storyboard */,
 				288BDC5125836070007620E7 /* Info.plist */,
@@ -219,6 +226,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2878DFEF25826218000BFD59 /* ViewController.swift in Sources */,
+				288BDC7E25838C2C007620E7 /* TableViewCell.swift in Sources */,
 				2878DFEB25826218000BFD59 /* AppDelegate.swift in Sources */,
 				2878DFED25826218000BFD59 /* SceneDelegate.swift in Sources */,
 			);
@@ -392,15 +400,16 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SharingExtension/SharingExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 87D55FRX5N;
+				DEVELOPMENT_TEAM = 6T8ZJ7M7C9;
 				INFOPLIST_FILE = SharingExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = cloudapper.SharingExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = engin.SharingExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -413,15 +422,16 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SharingExtension/SharingExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 87D55FRX5N;
+				DEVELOPMENT_TEAM = 6T8ZJ7M7C9;
 				INFOPLIST_FILE = SharingExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = cloudapper.SharingExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = engin.SharingExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -431,15 +441,16 @@
 		288BDC5625836070007620E7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = myExtension/myExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 87D55FRX5N;
+				DEVELOPMENT_TEAM = 6T8ZJ7M7C9;
 				INFOPLIST_FILE = myExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = cloudapper.SharingExtension.myExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = engin.SharingExtension.myExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -450,15 +461,16 @@
 		288BDC5725836070007620E7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = myExtension/myExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 87D55FRX5N;
+				DEVELOPMENT_TEAM = 6T8ZJ7M7C9;
 				INFOPLIST_FILE = myExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = cloudapper.SharingExtension.myExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = engin.SharingExtension.myExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;

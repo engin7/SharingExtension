@@ -1,42 +1,63 @@
 import UIKit
+import Social
 import MobileCoreServices
 
-@objc(ShareExtensionViewController)
-class ShareViewController: UIViewController {
+class ShareViewController: SLComposeServiceViewController {
+    
+    var imageType = ""
+    
+    override func isContentValid() -> Bool {
+        // Do validation of contentText and/or NSExtensionContext attachments here
+        return true
+    }
+    
+    override func didSelectPost() {
+       
+             print("In Did Post")
+                 if let item = self.extensionContext?.inputItems[0] as? NSExtensionItem{
+                     print("Item \(item)")
+                     for ele in item.attachments!{
+                         print("item.attachments!======&gt;&gt;&gt; \(ele as! NSItemProvider)")
+                         let itemProvider = ele as! NSItemProvider
+                         print(itemProvider)
+                         if itemProvider.hasItemConformingToTypeIdentifier("public.jpeg"){
+                             imageType = "public.jpeg"
+                         }
+                         if itemProvider.hasItemConformingToTypeIdentifier("public.png"){
+                              imageType = "public.png"
+                         }
+                         print("imageType\(imageType)")
+                         
+                         if itemProvider.hasItemConformingToTypeIdentifier(imageType){
+                             print("True")
+                             itemProvider.loadItem(forTypeIdentifier: imageType, options: nil, completionHandler: { (item, error) in
+                                 
+                                 var imgData: Data!
+                                 if let url = item as? URL{
+                                     imgData = try! Data(contentsOf: url)
+                                 }
+                                 
+                                 if let img = item as? UIImage{
+                                    imgData = img.pngData()
+                                 }
+                                 print("Item ===\(item)")
+                                 print("Image Data=====. \(imgData))")
+                                 let dict: [String : Any] = ["imgData" :  imgData, "name" : self.contentText]
+                                 let savedata =  UserDefaults.init(suiteName: "group.engin.SharingExtension")
+                                 savedata?.set(dict, forKey: "img")
+                                 savedata?.synchronize()
+                                 print("ImageData \(String(describing: savedata?.value(forKey: "img")))")
+                             })
+                         }
+                     }
+                    
+                 }
+             }
+   
 
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    
-    self.handleSharedFile()
-  }
-  
-    private func handleSharedFile() {
-      // extracting the path to the URL that is being shared
-        // We can access the attachments through the extensionContext
-      let attachments = (self.extensionContext?.inputItems.first as? NSExtensionItem)?.attachments ?? []
-      let contentType = kUTTypeData as String // check content type
-      for provider in attachments {
-        // Check if the content type is the same as we expected
-        if provider.hasItemConformingToTypeIdentifier(contentType) {
-          provider.loadItem(forTypeIdentifier: contentType,
-                            options: nil) { [unowned self] (data, error) in
-          // Handle the error here if you want
-          guard error == nil else { return }
-               // cast image to an URL
-          if let url = data as? URL,
-             let imageData = try? Data(contentsOf: url) {
-               self.save(imageData, key: "data", value: imageData)
-          } else {
-            // Handle this situation as you prefer
-            fatalError("Impossible to save image")
-          }
-        }}
-      }
+    override func configurationItems() -> [Any]! {
+        // To add configuration options via table cells at the bottom of the sheet, return an array of SLComposeSheetConfigurationItem here.
+        return []
     }
-      // FIXME - not a good approach to save large files to userDefaults, this is only for demonstration
-    private func save(_ data: Data, key: String, value: Any) {
-      let userDefaults = UserDefaults()
-      userDefaults.set(data, forKey: key)
-    }
-    
+
 }
