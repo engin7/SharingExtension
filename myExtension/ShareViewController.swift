@@ -6,6 +6,17 @@ class ShareViewController: SLComposeServiceViewController {
     
     var imageType = ""
     var textType = "public.text"
+    var savedata = UserDefaults.init(suiteName: "group.engin.SharingExtension")
+    
+    var importedElementsArray: [[String : Any]] {
+        get {
+            return savedata?.value(forKey: "imported") as? [[String : Any]] ?? []
+        }
+        set {
+            savedata?.set(newValue, forKey: "imported")
+            savedata?.synchronize()
+        }
+    }
     
     override func isContentValid() -> Bool {
         // Do validation of contentText and/or NSExtensionContext attachments here
@@ -27,22 +38,22 @@ class ShareViewController: SLComposeServiceViewController {
                          if itemProvider.hasItemConformingToTypeIdentifier("public.png"){
                               imageType = "public.png"
                          }
-                         print("imageType\(imageType)")
                          
+                         if itemProvider.hasItemConformingToTypeIdentifier(textType){
                         
+                                print("importing text")
                         
-                             if itemProvider.hasItemConformingToTypeIdentifier(textType){
-                            
-                                    print("importing text")
-                            
-                                    itemProvider.loadItem(forTypeIdentifier: textType, options: nil, completionHandler: { (item, error) in
-                                       
-                                        print("Text item ===\(item)")
-                                        
-                                        
-                                        
-                                    })
-                                }
+                            itemProvider.loadItem(forTypeIdentifier: textType, options: nil, completionHandler: { [self] (item, error) in
+                                   
+                                    print("Text item ===\(item)")
+                                    
+                                    let dict: [String : Any] = ["text" :  item]
+                                importedElementsArray.append(dict)
+                                    
+                                    print("TextData \(String(describing: savedata?.value(forKey: "imported")))")
+
+                                })
+                            }
                      
  
                          if itemProvider.hasItemConformingToTypeIdentifier(imageType){
@@ -67,7 +78,6 @@ class ShareViewController: SLComposeServiceViewController {
                              })
                          }
                      }
-                    
                  }
              }
    
