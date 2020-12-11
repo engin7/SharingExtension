@@ -12,22 +12,29 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var tableView: UITableView!
     
     var importedElements: [[String : Any]] = []
-    var loadData = UserDefaults.init(suiteName: "group.engin.SharingExtension")
  
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Imported elements"
-        loadImportedItems()
-        tableView.reloadData()
+
     }
     
-     func loadImportedItems() {
-             
+     override func viewWillAppear(_ animated: Bool) {
+
+        super.viewWillAppear(true)
+        loadImportedItems()
+    }
+    
+       func loadImportedItems() {
+            let loadData = UserDefaults.init(suiteName: "group.engin.SharingExtension")
             if loadData?.value(forKey: "imported") != nil {
                 print("Available Data")
                 importedElements = loadData?.value(forKey: "imported") as! [[String : Any]]
            }
+        tableView.reloadData()
     }
+    
+  
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         importedElements.count

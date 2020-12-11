@@ -77,6 +77,10 @@ class ShareViewController: SLComposeServiceViewController {
                          }
                      }
                  }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        self.extensionContext?.completeRequest(returningItems: [], completionHandler:nil)
+                    }
+                                    
              }
    
 

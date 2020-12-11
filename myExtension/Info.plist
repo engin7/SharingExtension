@@ -27,7 +27,7 @@
 			<key>NSExtensionActivationRule</key>
 			<dict>
 				<key>NSExtensionActivationSupportsImageWithMaxCount</key>
-				<string>20</string>
+				<string>10</string>
 				<key>NSExtensionActivationSupportsText</key>
 				<true/>
 			</dict>
