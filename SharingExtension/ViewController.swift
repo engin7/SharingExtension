@@ -25,9 +25,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
              
             if loadData?.value(forKey: "imported") != nil {
                 print("Available Data")
-//                let data = ((loadData?.value(forKey: "imported")as! NSDictionary).value(forKey: "imgData")as! Data)
-//                let str = ((savedata?.value(forKey: "imported")as! NSDictionary).value(forKey: "name")as! String)
-                
                 importedElements = loadData?.value(forKey: "imported") as! [[String : Any]]
            }
     }
@@ -43,6 +40,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // text or image
 
         if (importedElement["text"] != nil)  {
+            cell.myImageView.image = UIImage()
             cell.myLabel.text = importedElement.value(forKey: "text")as? String
         } else {
             let imageData = importedElement.value(forKey: "imageData")as! Data
@@ -53,7 +51,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
    
 }
 
