@@ -8,6 +8,7 @@ class ShareViewController: SLComposeServiceViewController {
     var textType = "public.text"
     var savedata = UserDefaults.init(suiteName: "group.engin.SharingExtension")
     
+    // computed property
     var importedElementsArray: [[String : Any]] {
         get {
             return savedata?.value(forKey: "imported") as? [[String : Any]] ?? []
@@ -48,17 +49,16 @@ class ShareViewController: SLComposeServiceViewController {
                                     print("Text item ===\(item)")
                                     
                                     let dict: [String : Any] = ["text" :  item]
-                                importedElementsArray.append(dict)
+                                    importedElementsArray.append(dict)
                                     
                                     print("TextData \(String(describing: savedata?.value(forKey: "imported")))")
 
                                 })
                             }
                      
- 
                          if itemProvider.hasItemConformingToTypeIdentifier(imageType){
                              print("True")
-                             itemProvider.loadItem(forTypeIdentifier: imageType, options: nil, completionHandler: { (item, error) in
+                            itemProvider.loadItem(forTypeIdentifier: imageType, options: nil, completionHandler: { [self] (item, error) in
                                  
                                  var imgData: Data!
                                  if let url = item as? URL{
@@ -70,11 +70,9 @@ class ShareViewController: SLComposeServiceViewController {
                                  }
                                  print("Item ===\(item)")
                                  print("Image Data=====. \(imgData))")
-                                 let dict: [String : Any] = ["imgData" :  imgData, "name" : self.contentText]
-                                 let savedata =  UserDefaults.init(suiteName: "group.engin.SharingExtension")
-                                 savedata?.set(dict, forKey: "img")
-                                 savedata?.synchronize()
-                                 print("ImageData \(String(describing: savedata?.value(forKey: "img")))")
+                                let dict: [String : Any] = [ "imageData" : imgData, "imageText" : self.contentText]
+                                 importedElementsArray.append(dict)
+                                 print("ImageData \(String(describing: savedata?.value(forKey: "imported")))")
                              })
                          }
                      }

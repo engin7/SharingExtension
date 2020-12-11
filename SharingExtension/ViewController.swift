@@ -10,10 +10,10 @@ import UIKit
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     
     @IBOutlet weak var tableView: UITableView!
-    var importedElements: [UIImage] = []
-
-     
-
+    
+    var importedElements: [[String : Any]] = []
+    var loadData = UserDefaults.init(suiteName: "group.engin.SharingExtension")
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Imported elements"
@@ -22,14 +22,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
      func loadImportedItems() {
-            let savedata =  UserDefaults.init(suiteName: "group.engin.SharingExtension")
-            print("ImageData \(String(describing: savedata?.value(forKey: "img")))")
-            if savedata?.value(forKey: "img") != nil {
+             
+            if loadData?.value(forKey: "imported") != nil {
                 print("Available Data")
-                let data = ((savedata?.value(forKey: "img")as! NSDictionary).value(forKey: "imgData")as! Data)
-                let str = ((savedata?.value(forKey: "img")as! NSDictionary).value(forKey: "name")as! String)
-                let image = UIImage(data: data)
-                importedElements.append(image!)
+//                let data = ((loadData?.value(forKey: "imported")as! NSDictionary).value(forKey: "imgData")as! Data)
+//                let str = ((savedata?.value(forKey: "imported")as! NSDictionary).value(forKey: "name")as! String)
+                
+                importedElements = loadData?.value(forKey: "imported") as! [[String : Any]]
            }
     }
     
@@ -39,13 +38,22 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath as IndexPath) as! TableViewCell
+        let importedElement = importedElements[indexPath.row] as NSDictionary
+        
         // text or image
 
-        cell.myImageView.image = importedElements[indexPath.row]
-        
+        if (importedElement["text"] != nil)  {
+            cell.myLabel.text = importedElement.value(forKey: "text")as? String
+        } else {
+            let imageData = importedElement.value(forKey: "imageData")as! Data
+            cell.myLabel.text = importedElement.value(forKey: "imageText")as? String
+            cell.myImageView.image = UIImage(data: imageData)
+        }
+    
         return cell
     }
+    
+    
    
-     
 }
 
