@@ -5,6 +5,7 @@ import MobileCoreServices
 class ShareViewController: SLComposeServiceViewController {
     
     var imageType = ""
+    var textType = "public.text"
     
     override func isContentValid() -> Bool {
         // Do validation of contentText and/or NSExtensionContext attachments here
@@ -28,6 +29,22 @@ class ShareViewController: SLComposeServiceViewController {
                          }
                          print("imageType\(imageType)")
                          
+                        
+                        
+                             if itemProvider.hasItemConformingToTypeIdentifier(textType){
+                            
+                                    print("importing text")
+                            
+                                    itemProvider.loadItem(forTypeIdentifier: textType, options: nil, completionHandler: { (item, error) in
+                                       
+                                        print("Text item ===\(item)")
+                                        
+                                        
+                                        
+                                    })
+                                }
+                     
+ 
                          if itemProvider.hasItemConformingToTypeIdentifier(imageType){
                              print("True")
                              itemProvider.loadItem(forTypeIdentifier: imageType, options: nil, completionHandler: { (item, error) in
