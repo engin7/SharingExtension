@@ -64,7 +64,6 @@ class ShareViewController: SLComposeServiceViewController {
                                  if let url = item as? URL{
                                      imgData = try! Data(contentsOf: url)
                                  }
-                                 
                                  if let img = item as? UIImage{
                                     imgData = img.pngData()
                                  }
@@ -77,18 +76,10 @@ class ShareViewController: SLComposeServiceViewController {
                          }
                      }
                  }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        
-                        self.extensionContext?.completeRequest(returningItems: [], completionHandler:nil)
-
-                        
-                        if let url = URL(string: "OpenURL://")
-                                 {
-                                     self.extensionContext?.open(url, completionHandler: nil)
-                                 }
-
-                    }
-                                    
+        
+             self.openURL(url: NSURL(string:"containerapp://HomeVC")!)
+            self.extensionContext?.completeRequest(returningItems: [], completionHandler:nil)
+ 
              }
    
 
@@ -97,4 +88,28 @@ class ShareViewController: SLComposeServiceViewController {
         return []
     }
 
+    func openURL(url: NSURL) -> Bool {
+        do {
+            let application = try self.sharedApplication()
+            return application.performSelector(inBackground: "openURL:", with: url) != nil
+        }
+        catch {
+            return false
+        }
+    }
+
+    func sharedApplication() throws -> UIApplication {
+        var responder: UIResponder? = self
+        while responder != nil {
+            if let application = responder as? UIApplication {
+                return application
+            }
+
+            responder = responder?.next
+        }
+
+        throw NSError(domain: "UIInputViewController+sharedApplication.swift", code: 1, userInfo: nil)
+    }
+    
+    
 }

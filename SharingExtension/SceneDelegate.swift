@@ -59,7 +59,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       
         if let url = URLContexts.first?.url {
 
-               if url.scheme == "OpenURL" {
+               if url.scheme == "containerapp" {
                    
                guard let rootViewController = (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window?.rootViewController else {
                        return
