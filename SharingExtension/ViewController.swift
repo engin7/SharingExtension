@@ -16,16 +16,22 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Imported elements"
-
-    }
-    
-     override func viewWillAppear(_ animated: Bool) {
-
-        super.viewWillAppear(true)
+        
         loadImportedItems()
+        // update
+        if #available(iOS 13.0, *) {
+            NotificationCenter.default.addObserver(self, selector: #selector(loadImportedItems), name: UIScene.didActivateNotification, object: nil)
+        } else {
+            // Fallback on earlier versions
+            NotificationCenter.default.addObserver(self, selector: #selector(loadImportedItems), name: UIApplication.didBecomeActiveNotification, object: nil)
+        }
+    }
+   
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
-       func loadImportedItems() {
+    @objc func loadImportedItems() {
             let loadData = UserDefaults.init(suiteName: "group.engin.SharingExtension")
             if loadData?.value(forKey: "imported") != nil {
                 print("Available Data")

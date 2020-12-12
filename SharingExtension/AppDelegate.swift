@@ -32,27 +32,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-
+    
+// You can check link if you want to process url paths https://developer.apple.com/documentation/xcode/allowing_apps_and_websites_to_link_to_your_content/defining_a_custom_url_scheme_for_your_app
+    
     func application(_ application: UIApplication, open url: URL,
                      sourceApplication: String?, annotation: Any) -> Bool {
 
-        let action_today = "containerapp://"
-        if url.absoluteString.contains(action_today) {
+        let root = "containerapp://"
+        if url.absoluteString.contains(root) {
             return true
         }
 
         return false
     }
-
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-
-        let action_today = "containerapp://"
-        if url.absoluteString.contains(action_today) {
-            return true
-        }
-        return false
-    }
-    
-
+ 
 }
 
