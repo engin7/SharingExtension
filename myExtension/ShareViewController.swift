@@ -1,8 +1,7 @@
 import UIKit
-import Social
-import MobileCoreServices
+ 
 
-class ShareViewController: SLComposeServiceViewController {
+class ShareViewController: UIViewController {
     
     var imageType = ""
     var textType = "public.text"
@@ -21,12 +20,33 @@ class ShareViewController: SLComposeServiceViewController {
         }
     }
     
-    override func isContentValid() -> Bool {
-        // Do validation of contentText and/or NSExtensionContext attachments here
-        return true
-    }
+    // ShareViewController continued from Step 1.
+
+        override func viewDidLoad() {
+            super.viewDidLoad()
+
+            // https://stackoverflow.com/questions/17041669/creating-a-blurring-overlay-view/25706250
+
+            // only apply the blur if the user hasn't disabled transparency effects
+            if UIAccessibility.isReduceTransparencyEnabled == false {
+                view.backgroundColor = .clear
+
+                let blurEffect = UIBlurEffect(style: .dark)
+                let blurEffectView = UIVisualEffectView(effect: blurEffect)
+                //always fill the view
+                blurEffectView.frame = self.view.bounds
+                blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+
+                view.insertSubview(blurEffectView, at: 0)
+            } else {
+                view.backgroundColor = .black
+            }
+            // Do any additional setup after loading the view.
+        }
     
-    override func didSelectPost() {
+      
+    
+      func didSelectPost() {
        
              print("In Did Post")
                  if let item = self.extensionContext?.inputItems[0] as? NSExtensionItem{
@@ -87,7 +107,7 @@ class ShareViewController: SLComposeServiceViewController {
                                  }
                                  print("Item ===\(item)")
                                  print("Image Data=====. \(imgData))")
-                                 let dict: [String : Any] = [ "imageData" : imgData, "imageText" : self.contentText]
+                                 let dict: [String : Any] = [ "imageData" : imgData, "imageText" : "images"]
                                  importedElementsArray.append(dict)
                                  print("ImageData \(String(describing: savedata?.value(forKey: "imported")))")
                              })
@@ -102,10 +122,7 @@ class ShareViewController: SLComposeServiceViewController {
              }
    
 
-    override func configurationItems() -> [Any]! {
-        // To add configuration options via table cells at the bottom of the sheet, return an array of SLComposeSheetConfigurationItem here.
-        return []
-    }
+     
 
     func openURL(url: NSURL) -> Bool {
         do {

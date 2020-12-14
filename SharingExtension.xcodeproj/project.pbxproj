@@ -13,8 +13,8 @@
 		2878DFF225826218000BFD59 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2878DFF025826218000BFD59 /* Main.storyboard */; };
 		2878DFF42582621B000BFD59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2878DFF32582621B000BFD59 /* Assets.xcassets */; };
 		2878DFF72582621B000BFD59 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2878DFF52582621B000BFD59 /* LaunchScreen.storyboard */; };
+		287CF9422587B0E4001D6128 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 287CF9412587B0E4001D6128 /* MainInterface.storyboard */; };
 		288BDC4D25836070007620E7 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288BDC4C25836070007620E7 /* ShareViewController.swift */; };
-		288BDC5025836070007620E7 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 288BDC4E25836070007620E7 /* MainInterface.storyboard */; };
 		288BDC5425836070007620E7 /* myExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 288BDC4A25836070007620E7 /* myExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		288BDC7E25838C2C007620E7 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288BDC7D25838C2C007620E7 /* TableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -52,9 +52,9 @@
 		2878DFF32582621B000BFD59 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2878DFF62582621B000BFD59 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2878DFF82582621B000BFD59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		287CF9412587B0E4001D6128 /* MainInterface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 		288BDC4A25836070007620E7 /* myExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = myExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		288BDC4C25836070007620E7 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
-		288BDC4F25836070007620E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		288BDC5125836070007620E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		288BDC6525837447007620E7 /* myExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = myExtension.entitlements; sourceTree = "<group>"; };
 		288BDC7A258384FD007620E7 /* SharingExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SharingExtension.entitlements; sourceTree = "<group>"; };
@@ -118,7 +118,7 @@
 			children = (
 				288BDC6525837447007620E7 /* myExtension.entitlements */,
 				288BDC4C25836070007620E7 /* ShareViewController.swift */,
-				288BDC4E25836070007620E7 /* MainInterface.storyboard */,
+				287CF9412587B0E4001D6128 /* MainInterface.storyboard */,
 				288BDC5125836070007620E7 /* Info.plist */,
 			);
 			path = myExtension;
@@ -214,7 +214,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				288BDC5025836070007620E7 /* MainInterface.storyboard in Resources */,
+				287CF9422587B0E4001D6128 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,14 +265,6 @@
 				2878DFF62582621B000BFD59 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		288BDC4E25836070007620E7 /* MainInterface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				288BDC4F25836070007620E7 /* Base */,
-			);
-			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
