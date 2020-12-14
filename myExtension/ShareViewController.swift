@@ -6,6 +6,8 @@ class ShareViewController: SLComposeServiceViewController {
     
     var imageType = ""
     var textType = "public.text"
+    var urlType = "public.url"
+    
     var savedata = UserDefaults.init(suiteName: "group.engin.SharingExtension")
     
     // computed property
@@ -33,14 +35,8 @@ class ShareViewController: SLComposeServiceViewController {
                          print("item.attachments!======&gt;&gt;&gt; \(ele as! NSItemProvider)")
                          let itemProvider = ele as! NSItemProvider
                          print(itemProvider)
-                         if itemProvider.hasItemConformingToTypeIdentifier("public.jpeg"){
-                             imageType = "public.jpeg"
-                         }
-                         if itemProvider.hasItemConformingToTypeIdentifier("public.png"){
-                              imageType = "public.png"
-                         }
-                         
-                         if itemProvider.hasItemConformingToTypeIdentifier(textType){
+
+                        if itemProvider.hasItemConformingToTypeIdentifier(textType) {
                         
                                 print("importing text")
                         
@@ -54,8 +50,30 @@ class ShareViewController: SLComposeServiceViewController {
                                     print("TextData \(String(describing: savedata?.value(forKey: "imported")))")
 
                                 })
-                            }
-                     
+                        } else if itemProvider.hasItemConformingToTypeIdentifier(urlType) {
+                            
+                            itemProvider.loadItem(forTypeIdentifier: urlType, options: nil, completionHandler: { [self] (item, error) in
+                                   
+                                let urlItem = item as! URL
+                                let urlItemString = urlItem.absoluteString
+                                
+                                    print("URL item ===\(item)")
+                                    
+                                let dict: [String : Any] = ["text" :  urlItemString]
+                                    importedElementsArray.append(dict)
+                                    
+                                    print("URLData \(String(describing: savedata?.value(forKey: "imported")))")
+
+                                })
+                            
+                        } else {
+                        
+                         if itemProvider.hasItemConformingToTypeIdentifier("public.jpeg"){
+                            imageType = "public.jpeg"
+                         }
+                         if itemProvider.hasItemConformingToTypeIdentifier("public.png"){
+                            imageType = "public.png"
+                         }
                          if itemProvider.hasItemConformingToTypeIdentifier(imageType){
                              print("True")
                             itemProvider.loadItem(forTypeIdentifier: imageType, options: nil, completionHandler: { [self] (item, error) in
@@ -69,10 +87,11 @@ class ShareViewController: SLComposeServiceViewController {
                                  }
                                  print("Item ===\(item)")
                                  print("Image Data=====. \(imgData))")
-                                let dict: [String : Any] = [ "imageData" : imgData, "imageText" : self.contentText]
+                                 let dict: [String : Any] = [ "imageData" : imgData, "imageText" : self.contentText]
                                  importedElementsArray.append(dict)
                                  print("ImageData \(String(describing: savedata?.value(forKey: "imported")))")
                              })
+                         }
                          }
                      }
                  }

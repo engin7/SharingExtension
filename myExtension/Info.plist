@@ -30,6 +30,8 @@
 				<string>10</string>
 				<key>NSExtensionActivationSupportsText</key>
 				<true/>
+				<key>NSExtensionActivationSupportsWebPageWithMaxCount</key>
+				<string>1</string>
 			</dict>
 		</dict>
 		<key>NSExtensionMainStoryboard</key>
