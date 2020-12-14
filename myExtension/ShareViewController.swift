@@ -1,11 +1,16 @@
 import UIKit
  
 
+@available(iOSApplicationExtension 13.0, *)
 class ShareViewController: UIViewController {
+   
+    
+    @IBOutlet weak var collectionView: UICollectionView!
     
     var imageType = ""
     var textType = "public.text"
     var urlType = "public.url"
+    var importedImages: [UIImage] = []
     
     var savedata = UserDefaults.init(suiteName: "group.engin.SharingExtension")
     
@@ -24,7 +29,7 @@ class ShareViewController: UIViewController {
 
         override func viewDidLoad() {
             super.viewDidLoad()
-
+ 
             // https://stackoverflow.com/questions/17041669/creating-a-blurring-overlay-view/25706250
 
             // only apply the blur if the user hasn't disabled transparency effects
@@ -42,14 +47,27 @@ class ShareViewController: UIViewController {
                 view.backgroundColor = .black
             }
             // Do any additional setup after loading the view.
+            pushVC()
         }
     
-      
-    
-      func didSelectPost() {
+    func pushVC() {
+        
+        
+        guard let vc = UIStoryboard(name: "MainInterface", bundle: nil).instantiateViewController(withIdentifier: "ImgCollectionVC") as? ImgCollectionViewController else {
+                                fatalError("ImgCollectionVC could not be initialized with storyboard")
+                            }
+        
+        let image = UIImage(systemName: "info.circle")
+        importedImages.append(image!)
+        vc.imageSet = importedImages
+        navigationController?.pushViewController(vc, animated: true)
+
+        
+    }
+      func sharingPost() {
        
              print("In Did Post")
-                 if let item = self.extensionContext?.inputItems[0] as? NSExtensionItem{
+                 if let item = self.extensionContext?.inputItems[0] as? NSExtensionItem {
                      print("Item \(item)")
                      for ele in item.attachments!{
                          print("item.attachments!======&gt;&gt;&gt; \(ele as! NSItemProvider)")
@@ -105,6 +123,11 @@ class ShareViewController: UIViewController {
                                  if let img = item as? UIImage{
                                     imgData = img.pngData()
                                  }
+                                
+                                
+                                let image = UIImage(data: imgData)!
+                                importedImages.append(image)
+                                
                                  print("Item ===\(item)")
                                  print("Image Data=====. \(imgData))")
                                  let dict: [String : Any] = [ "imageData" : imgData, "imageText" : "images"]
@@ -114,15 +137,20 @@ class ShareViewController: UIViewController {
                          }
                          }
                      }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
+                        self.pushVC()
+
+                    }
                  }
-        
-             self.openURL(url: NSURL(string:"containerapp://HomeVC")!)
-            self.extensionContext?.completeRequest(returningItems: [], completionHandler:nil)
- 
+             
              }
    
 
-     
+    func nextButton() {
+        self.openURL(url: NSURL(string:"containerapp://HomeVC")!)
+       self.extensionContext?.completeRequest(returningItems: [], completionHandler:nil)
+
+    }
 
     func openURL(url: NSURL) -> Bool {
         do {

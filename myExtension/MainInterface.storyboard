@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="j1y-V4-xli">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="j1y-V4-xli">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -36,16 +37,52 @@
         <!--CircleCare-->
         <scene sceneID="rzk-wh-hzG">
             <objects>
-                <viewController id="H8F-6S-u7V" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ImgCollectionVC" id="H8F-6S-u7V" customClass="ImgCollectionViewController" customModule="myExtension" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="q67-em-Gef">
                         <rect key="frame" x="0.0" y="0.0" width="374" height="514"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="H2g-zX-u8r">
+                                <rect key="frame" x="0.0" y="88" width="374" height="426"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QrM-Hb-MXX">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="KA3-n8-dBP">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Jtv-ta-Uzd">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="H8F-6S-u7V" id="40g-iA-uiv"/>
+                                    <outlet property="delegate" destination="H8F-6S-u7V" id="orX-pv-krj"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="KDr-Zm-JMD"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="H2g-zX-u8r" firstAttribute="top" secondItem="KDr-Zm-JMD" secondAttribute="top" id="DY6-pd-97S"/>
+                            <constraint firstItem="H2g-zX-u8r" firstAttribute="leading" secondItem="KDr-Zm-JMD" secondAttribute="leading" id="GHi-Rs-Cd3"/>
+                            <constraint firstItem="KDr-Zm-JMD" firstAttribute="trailing" secondItem="H2g-zX-u8r" secondAttribute="trailing" id="GV7-UH-mM8"/>
+                            <constraint firstItem="KDr-Zm-JMD" firstAttribute="bottom" secondItem="H2g-zX-u8r" secondAttribute="bottom" id="Obg-F0-9lh"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="CircleCare" id="syB-PK-m2C">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="9x2-nR-S2O"/>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="8f1-L4-aUy"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="H2g-zX-u8r" id="zgq-ed-JBf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j4n-3h-IWb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
