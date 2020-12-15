@@ -16,7 +16,7 @@ class TextViewController: UIViewController {
     }
     
     @IBAction func nextAction(_ sender: Any) {
-        shareVC?.nextButton()
+        shareVC?.textNextButtonPressed()
     }
     
     

@@ -9,6 +9,8 @@ class ShareViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var aspectRatio: NSLayoutConstraint!
 
+    var textDict: [String : Any] = ["text" : "placeholder"]
+    
     private var ratio: CGFloat = 1
     var imageType = ""
     var textType = "public.text"
@@ -109,11 +111,8 @@ class ShareViewController: UIViewController {
                 textVC.textView.reloadInputViews()
                 }
                 
-                    let dict: [String : Any] = ["text" :  item]
-                    importedElementsArray.append(dict)
-
-                    print("TextData \(String(describing: savedata?.value(forKey: "imported")))")
-
+                textDict = ["text" :  item]
+ 
                 })
         } else if itemProvider.hasItemConformingToTypeIdentifier(urlType) {
 
@@ -130,11 +129,8 @@ class ShareViewController: UIViewController {
                 textVC.textView.reloadInputViews()
                 }
                 
-                let dict: [String : Any] = ["text" :  urlItemString]
-                    importedElementsArray.append(dict)
-
-                    print("URLData \(String(describing: savedata?.value(forKey: "imported")))")
-
+                textDict = ["text" :  urlItemString]
+                     
                 })
 
         }
@@ -190,7 +186,14 @@ class ShareViewController: UIViewController {
                      }
                  }
              }
-  
+    
+    func textNextButtonPressed() {
+        importedElementsArray.append(textDict)
+        print("URLData \(String(describing: savedata?.value(forKey: "imported")))")
+        self.openURL(url: NSURL(string:"containerapp://HomeVC")!)
+        self.extensionContext?.completeRequest(returningItems: [], completionHandler:nil)
+    }
+    
     func nextButton() {
         self.openURL(url: NSURL(string:"containerapp://HomeVC")!)
         self.extensionContext?.completeRequest(returningItems: [], completionHandler:nil)
