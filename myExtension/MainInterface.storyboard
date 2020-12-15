@@ -18,9 +18,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9vT-3I-4dE">
-                                <rect key="frame" x="20" y="140" width="388" height="646"/>
+                                <rect key="frame" x="20" y="204.33333333333331" width="388" height="517.33333333333348"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="9vT-3I-4dE" secondAttribute="height" multiplier="90:150" id="8OX-7g-0uN"/>
+                                    <constraint firstAttribute="width" secondItem="9vT-3I-4dE" secondAttribute="height" multiplier="3:4" id="8OX-7g-0uN"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="loM-MR-BTV" kind="embed" id="hEx-UP-ub5"/>
@@ -30,7 +30,7 @@
                                 <rect key="frame" x="195.66666666666666" y="444.66666666666669" width="37" height="37"/>
                             </activityIndicatorView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1qM-xa-Muy" userLabel="TextContainerView">
-                                <rect key="frame" x="24" y="387" width="380" height="152"/>
+                                <rect key="frame" x="20" y="385.33333333333331" width="388" height="155.33333333333331"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="1qM-xa-Muy" secondAttribute="height" multiplier="5:2" id="am5-rG-BtK"/>
                                 </constraints>
@@ -44,8 +44,8 @@
                         <constraints>
                             <constraint firstItem="9vT-3I-4dE" firstAttribute="leading" secondItem="1Xd-am-t49" secondAttribute="leading" constant="20" id="AwU-dU-LLy"/>
                             <constraint firstItem="1qM-xa-Muy" firstAttribute="centerX" secondItem="wbc-yd-nQP" secondAttribute="centerX" id="Eoe-vH-cBP"/>
-                            <constraint firstItem="1Xd-am-t49" firstAttribute="trailing" secondItem="1qM-xa-Muy" secondAttribute="trailing" constant="24" id="FlF-lL-ZC9"/>
-                            <constraint firstItem="1qM-xa-Muy" firstAttribute="leading" secondItem="1Xd-am-t49" secondAttribute="leading" constant="24" id="JVC-I1-s1H"/>
+                            <constraint firstItem="1Xd-am-t49" firstAttribute="trailing" secondItem="1qM-xa-Muy" secondAttribute="trailing" constant="20" id="FlF-lL-ZC9"/>
+                            <constraint firstItem="1qM-xa-Muy" firstAttribute="leading" secondItem="1Xd-am-t49" secondAttribute="leading" constant="20" id="JVC-I1-s1H"/>
                             <constraint firstItem="OUb-3v-Bga" firstAttribute="centerY" secondItem="9vT-3I-4dE" secondAttribute="centerY" id="KAU-cL-03s"/>
                             <constraint firstItem="OUb-3v-Bga" firstAttribute="centerX" secondItem="9vT-3I-4dE" secondAttribute="centerX" id="QZO-GP-4yD"/>
                             <constraint firstItem="9vT-3I-4dE" firstAttribute="centerY" secondItem="wbc-yd-nQP" secondAttribute="centerY" id="WkH-sj-T4d"/>
@@ -70,11 +70,11 @@
             <objects>
                 <viewController storyboardIdentifier="ImgCollectionVC" id="H8F-6S-u7V" customClass="ImgCollectionViewController" customModule="myExtension" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="q67-em-Gef">
-                        <rect key="frame" x="0.0" y="0.0" width="388" height="646"/>
+                        <rect key="frame" x="0.0" y="0.0" width="388" height="517.33333333333326"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="H2g-zX-u8r">
-                                <rect key="frame" x="0.0" y="88" width="388" height="558"/>
+                                <rect key="frame" x="0.0" y="87.999999999999972" width="388" height="429.33333333333326"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QrM-Hb-MXX">
                                     <size key="itemSize" width="140" height="175"/>
@@ -154,11 +154,11 @@
             <objects>
                 <viewController id="EGP-nb-nog" customClass="TextViewController" customModule="myExtension" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NNw-JG-mXX">
-                        <rect key="frame" x="0.0" y="0.0" width="380" height="152"/>
+                        <rect key="frame" x="0.0" y="0.0" width="388" height="155.33333333333331"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="qH9-Qg-KXI">
-                                <rect key="frame" x="8" y="8" width="364" height="136"/>
+                                <rect key="frame" x="8" y="8" width="372" height="139.33333333333334"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor"/>
@@ -166,6 +166,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="31R-oE-8bp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="qH9-Qg-KXI" secondAttribute="bottom" constant="8" id="Fce-l3-Vkb"/>
@@ -202,7 +203,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="odo-FN-6Iq" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="unW-HR-L1G">
-                        <rect key="frame" x="0.0" y="44" width="380" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="388" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
