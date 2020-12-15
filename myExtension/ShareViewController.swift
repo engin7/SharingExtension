@@ -35,7 +35,6 @@ class ShareViewController: UIViewController {
     
         override func viewDidLoad() {
             super.viewDidLoad()
-            addBlurEffect()
             setUpContainerViews()
             
         }
@@ -51,24 +50,7 @@ class ShareViewController: UIViewController {
         imageContainerView.layer.masksToBounds = true
          
     }
-    
-    func addBlurEffect() {
-        // only apply the blur if the user hasn't disabled transparency effects
-        if UIAccessibility.isReduceTransparencyEnabled == false {
-            view.backgroundColor = .clear
-
-            let blurEffect = UIBlurEffect(style: .dark)
-            let blurEffectView = UIVisualEffectView(effect: blurEffect)
-            //always fill the view
-            blurEffectView.frame = self.view.bounds
-            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-
-            view.insertSubview(blurEffectView, at: 0)
-        } else {
-            view.backgroundColor = .black
-        }
-    }
-  
+     
     override func viewWillAppear(_ animated: Bool) {
       
         sharingPost { [self] in

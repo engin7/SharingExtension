@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="j1y-V4-xli">
-    <device id="retina6_7" orientation="portrait" appearance="light"/>
+    <device id="ipad10_9rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
@@ -14,11 +14,11 @@
             <objects>
                 <viewController title="CircleCare" id="j1y-V4-xli" customClass="ShareViewController" customModule="myExtension" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" opaque="NO" contentMode="scaleToFill" id="wbc-yd-nQP">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <rect key="frame" x="0.0" y="0.0" width="820" height="1180"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9vT-3I-4dE">
-                                <rect key="frame" x="20" y="204.33333333333331" width="388" height="517.33333333333348"/>
+                                <rect key="frame" x="20" y="70" width="780" height="1040"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="9vT-3I-4dE" secondAttribute="height" multiplier="3:4" id="8OX-7g-0uN"/>
                                 </constraints>
@@ -27,10 +27,10 @@
                                 </connections>
                             </containerView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="OUb-3v-Bga">
-                                <rect key="frame" x="195.66666666666666" y="444.66666666666669" width="37" height="37"/>
+                                <rect key="frame" x="391.5" y="571.5" width="37" height="37"/>
                             </activityIndicatorView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1qM-xa-Muy" userLabel="TextContainerView">
-                                <rect key="frame" x="20" y="385.33333333333331" width="388" height="155.33333333333331"/>
+                                <rect key="frame" x="20" y="434" width="780" height="312"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="1qM-xa-Muy" secondAttribute="height" multiplier="5:2" id="am5-rG-BtK"/>
                                 </constraints>
@@ -70,11 +70,11 @@
             <objects>
                 <viewController storyboardIdentifier="ImgCollectionVC" id="H8F-6S-u7V" customClass="ImgCollectionViewController" customModule="myExtension" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="q67-em-Gef">
-                        <rect key="frame" x="0.0" y="0.0" width="388" height="517.33333333333326"/>
+                        <rect key="frame" x="0.0" y="0.0" width="780" height="1040"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="H2g-zX-u8r">
-                                <rect key="frame" x="0.0" y="87.999999999999972" width="388" height="429.33333333333326"/>
+                                <rect key="frame" x="0.0" y="50" width="780" height="990"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QrM-Hb-MXX">
                                     <size key="itemSize" width="140" height="175"/>
@@ -133,7 +133,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="loM-MR-BTV" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="D82-R4-9Qz">
-                        <rect key="frame" x="0.0" y="44" width="388" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="780" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
@@ -154,11 +154,11 @@
             <objects>
                 <viewController id="EGP-nb-nog" customClass="TextViewController" customModule="myExtension" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NNw-JG-mXX">
-                        <rect key="frame" x="0.0" y="0.0" width="388" height="155.33333333333331"/>
+                        <rect key="frame" x="0.0" y="0.0" width="780" height="312"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="qH9-Qg-KXI">
-                                <rect key="frame" x="8" y="8" width="372" height="139.33333333333334"/>
+                                <rect key="frame" x="8" y="8" width="764" height="296"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor"/>
@@ -203,7 +203,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="odo-FN-6Iq" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="unW-HR-L1G">
-                        <rect key="frame" x="0.0" y="44" width="388" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="780" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
