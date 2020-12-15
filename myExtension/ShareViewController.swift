@@ -33,7 +33,7 @@ class ShareViewController: UIViewController {
             super.viewDidLoad()
             addBlurEffect()
             setUpContainerViews()
-           
+            
         }
      
     
@@ -85,10 +85,13 @@ class ShareViewController: UIViewController {
     
     func processText(itemProvider: NSItemProvider) {
          
+        let textVC : TextViewController = self.children[1].children[0] as! TextViewController
+ 
         if itemProvider.hasItemConformingToTypeIdentifier(urlType) || itemProvider.hasItemConformingToTypeIdentifier(textType) {
             DispatchQueue.main.async { [self] in
             textContainerView.isHidden = false
             imageContainerView.isHidden = true
+                
             }
         }
         
@@ -100,6 +103,12 @@ class ShareViewController: UIViewController {
 
                     print("Text item ===\(item)")
 
+                DispatchQueue.main.async {
+                textVC.textView.text = item as? String
+                textVC.textView.textColor = .black
+                textVC.textView.reloadInputViews()
+                }
+                
                     let dict: [String : Any] = ["text" :  item]
                     importedElementsArray.append(dict)
 
@@ -113,8 +122,14 @@ class ShareViewController: UIViewController {
                 let urlItem = item as! URL
                 let urlItemString = urlItem.absoluteString
 
-                    print("URL item ===\(item)")
-
+                print("URL item ===\(item)")
+                
+                DispatchQueue.main.async {
+                textVC.textView.textColor = .blue
+                textVC.textView.text = urlItemString
+                textVC.textView.reloadInputViews()
+                }
+                
                 let dict: [String : Any] = ["text" :  urlItemString]
                     importedElementsArray.append(dict)
 
