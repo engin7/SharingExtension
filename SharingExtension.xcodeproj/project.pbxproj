@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1031F4362587F331004389A4 /* ImgCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1031F4352587F331004389A4 /* ImgCollectionViewController.swift */; };
 		282243D125888DBA00E5D17A /* sampleImage.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 282243D025888DBA00E5D17A /* sampleImage.jpeg */; };
+		282243E52588D96700E5D17A /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282243E42588D96700E5D17A /* TextViewController.swift */; };
 		2878DFEB25826218000BFD59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2878DFEA25826218000BFD59 /* AppDelegate.swift */; };
 		2878DFED25826218000BFD59 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2878DFEC25826218000BFD59 /* SceneDelegate.swift */; };
 		2878DFEF25826218000BFD59 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2878DFEE25826218000BFD59 /* ViewController.swift */; };
@@ -48,6 +49,7 @@
 /* Begin PBXFileReference section */
 		1031F4352587F331004389A4 /* ImgCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgCollectionViewController.swift; sourceTree = "<group>"; };
 		282243D025888DBA00E5D17A /* sampleImage.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sampleImage.jpeg; sourceTree = "<group>"; };
+		282243E42588D96700E5D17A /* TextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
 		2878DFE725826218000BFD59 /* SharingExtension.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SharingExtension.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2878DFEA25826218000BFD59 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2878DFEC25826218000BFD59 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				288BDC6525837447007620E7 /* myExtension.entitlements */,
 				288BDC4C25836070007620E7 /* ShareViewController.swift */,
 				1031F4352587F331004389A4 /* ImgCollectionViewController.swift */,
+				282243E42588D96700E5D17A /* TextViewController.swift */,
 				282243D025888DBA00E5D17A /* sampleImage.jpeg */,
 				287CF9412587B0E4001D6128 /* MainInterface.storyboard */,
 				288BDC5125836070007620E7 /* Info.plist */,
@@ -245,6 +248,7 @@
 			files = (
 				1031F4362587F331004389A4 /* ImgCollectionViewController.swift in Sources */,
 				288BDC4D25836070007620E7 /* ShareViewController.swift in Sources */,
+				282243E52588D96700E5D17A /* TextViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -4,9 +4,12 @@ import UIKit
  
 class ShareViewController: UIViewController {
     
-    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var textContainerView: UIView!
+    @IBOutlet weak var imageContainerView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
+    @IBOutlet weak var aspectRatio: NSLayoutConstraint!
+
+    private var ratio: CGFloat = 1
     var imageType = ""
     var textType = "public.text"
     var urlType = "public.url"
@@ -28,36 +31,48 @@ class ShareViewController: UIViewController {
     
         override func viewDidLoad() {
             super.viewDidLoad()
-            containerView.layer.cornerRadius = 15
-            containerView.layer.masksToBounds = true
-
-            // https://stackoverflow.com/questions/17041669/creating-a-blurring-overlay-view/25706250
-
-            // only apply the blur if the user hasn't disabled transparency effects
-            if UIAccessibility.isReduceTransparencyEnabled == false {
-                view.backgroundColor = .clear
-
-                let blurEffect = UIBlurEffect(style: .dark)
-                let blurEffectView = UIVisualEffectView(effect: blurEffect)
-                //always fill the view
-                blurEffectView.frame = self.view.bounds
-                blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-
-                view.insertSubview(blurEffectView, at: 0)
-            } else {
-                view.backgroundColor = .black
-            }
-            // Do any additional setup after loading the view.
-            
-            
+            addBlurEffect()
+            setUpContainerViews()
+           
         }
      
+    
+    func setUpContainerViews() {
+        
+        textContainerView.isHidden = true
+        textContainerView.layer.cornerRadius = 15
+        textContainerView.layer.masksToBounds = true
+        
+        imageContainerView.layer.cornerRadius = 15
+        imageContainerView.layer.masksToBounds = true
+         
+    }
+    
+    func addBlurEffect() {
+        // only apply the blur if the user hasn't disabled transparency effects
+        if UIAccessibility.isReduceTransparencyEnabled == false {
+            view.backgroundColor = .clear
+
+            let blurEffect = UIBlurEffect(style: .dark)
+            let blurEffectView = UIVisualEffectView(effect: blurEffect)
+            //always fill the view
+            blurEffectView.frame = self.view.bounds
+            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+
+            view.insertSubview(blurEffectView, at: 0)
+        } else {
+            view.backgroundColor = .black
+        }
+    }
+  
     override func viewWillAppear(_ animated: Bool) {
+      
         sharingPost { [self] in
             // reload
               
             let imageVC : ImgCollectionViewController = self.children[0].children[0] as! ImgCollectionViewController
             imageVC.imageSet = importedImages
+            
             DispatchQueue.main.async {
                 activityIndicator.stopAnimating()
                 activityIndicator.isHidden = true
@@ -68,39 +83,46 @@ class ShareViewController: UIViewController {
     }
     
     
-    func processText() {
+    func processText(itemProvider: NSItemProvider) {
+         
+        if itemProvider.hasItemConformingToTypeIdentifier(urlType) || itemProvider.hasItemConformingToTypeIdentifier(textType) {
+            DispatchQueue.main.async { [self] in
+            textContainerView.isHidden = false
+            imageContainerView.isHidden = true
+            }
+        }
         
-//        if itemProvider.hasItemConformingToTypeIdentifier(textType) {
-//
-//                print("importing text")
-//
-//            itemProvider.loadItem(forTypeIdentifier: textType, options: nil, completionHandler: { [self] (item, error) in
-//
-//                    print("Text item ===\(item)")
-//
-//                    let dict: [String : Any] = ["text" :  item]
-//                    importedElementsArray.append(dict)
-//
-//                    print("TextData \(String(describing: savedata?.value(forKey: "imported")))")
-//
-//                })
-//        } else if itemProvider.hasItemConformingToTypeIdentifier(urlType) {
-//
-//            itemProvider.loadItem(forTypeIdentifier: urlType, options: nil, completionHandler: { [self] (item, error) in
-//
-//                let urlItem = item as! URL
-//                let urlItemString = urlItem.absoluteString
-//
-//                    print("URL item ===\(item)")
-//
-//                let dict: [String : Any] = ["text" :  urlItemString]
-//                    importedElementsArray.append(dict)
-//
-//                    print("URLData \(String(describing: savedata?.value(forKey: "imported")))")
-//
-//                })
-//
-//        }
+        if itemProvider.hasItemConformingToTypeIdentifier(textType) {
+
+                print("importing text")
+
+            itemProvider.loadItem(forTypeIdentifier: textType, options: nil, completionHandler: { [self] (item, error) in
+
+                    print("Text item ===\(item)")
+
+                    let dict: [String : Any] = ["text" :  item]
+                    importedElementsArray.append(dict)
+
+                    print("TextData \(String(describing: savedata?.value(forKey: "imported")))")
+
+                })
+        } else if itemProvider.hasItemConformingToTypeIdentifier(urlType) {
+
+            itemProvider.loadItem(forTypeIdentifier: urlType, options: nil, completionHandler: { [self] (item, error) in
+
+                let urlItem = item as! URL
+                let urlItemString = urlItem.absoluteString
+
+                    print("URL item ===\(item)")
+
+                let dict: [String : Any] = ["text" :  urlItemString]
+                    importedElementsArray.append(dict)
+
+                    print("URLData \(String(describing: savedata?.value(forKey: "imported")))")
+
+                })
+
+        }
         
     }
     
@@ -114,7 +136,9 @@ class ShareViewController: UIViewController {
                          print("item.attachments!======&gt;&gt;&gt; \(ele as! NSItemProvider)")
                          let itemProvider = ele as! NSItemProvider
                          print(itemProvider)
- 
+                        
+                         processText(itemProvider: itemProvider)
+                        
                          if itemProvider.hasItemConformingToTypeIdentifier("public.jpeg"){
                             imageType = "public.jpeg"
                          } else if itemProvider.hasItemConformingToTypeIdentifier("public.png"){
