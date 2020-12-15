@@ -11,9 +11,21 @@ class TextViewController: UIViewController {
 
     @IBOutlet weak var textView: UITextView!
     
+    @IBAction func cancelAction(_ sender: Any) {
+        shareVC?.extensionContext?.completeRequest(returningItems: [], completionHandler:nil)
+    }
+    
+    @IBAction func nextAction(_ sender: Any) {
+        shareVC?.nextButton()
+    }
+    
+    
+    var shareVC : ShareViewController?
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        shareVC = self.parent?.parent as? ShareViewController
         // Do any additional setup after loading the view.
     }
     

@@ -193,7 +193,7 @@ class ShareViewController: UIViewController {
   
     func nextButton() {
         self.openURL(url: NSURL(string:"containerapp://HomeVC")!)
-       self.extensionContext?.completeRequest(returningItems: [], completionHandler:nil)
+        self.extensionContext?.completeRequest(returningItems: [], completionHandler:nil)
 
     }
 

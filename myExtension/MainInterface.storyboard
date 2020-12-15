@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9vT-3I-4dE">
-                                <rect key="frame" x="20" y="139.66666666666669" width="388" height="646.66666666666652"/>
+                                <rect key="frame" x="20" y="140" width="388" height="646"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="9vT-3I-4dE" secondAttribute="height" multiplier="90:150" id="8OX-7g-0uN"/>
                                 </constraints>
@@ -176,8 +176,16 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="CircleCare" id="faN-bJ-6T9">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="LTJ-zc-Dyw"/>
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="aHD-i7-KXo"/>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="LTJ-zc-Dyw">
+                            <connections>
+                                <action selector="cancelAction:" destination="EGP-nb-nog" id="4tc-gE-lWP"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="aHD-i7-KXo">
+                            <connections>
+                                <action selector="nextAction:" destination="EGP-nb-nog" id="pEa-IZ-HeL"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
