@@ -13,7 +13,6 @@ class ImgCollectionViewController: UIViewController, UICollectionViewDataSource,
     
     @IBAction func cancelAction(_ sender: Any) {
         shareVC?.extensionContext?.completeRequest(returningItems: [], completionHandler:nil)
-
     }
     
     @IBAction func nextAction(_ sender: Any) {
@@ -26,12 +25,10 @@ class ImgCollectionViewController: UIViewController, UICollectionViewDataSource,
     override func viewDidLoad() {
         super.viewDidLoad()
         shareVC = self.parent?.parent as? ShareViewController
-//        collectionView.isHidden = true
-        // Do any additional setup after loading the view.
+
     }
     
-
-    
+      
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         imageSet.count
     }
@@ -44,5 +41,25 @@ class ImgCollectionViewController: UIViewController, UICollectionViewDataSource,
         cell.layer.contents = image.cgImage
         return cell
     }
+ 
+}
 
+extension ImgCollectionViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        var height:CGFloat
+        var width:CGFloat
+        
+        if imageSet.count == 1 {
+            width  = collectionView.frame.width-30
+            height = collectionView.frame.height-70
+            return CGSize(width: width, height: height)
+        } else {
+            width  = collectionView.frame.width/2-30
+            height = collectionView.frame.height/2-70
+            return CGSize(width: width, height: height)
+        }
+    }
+    
 }
