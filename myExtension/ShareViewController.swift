@@ -10,6 +10,8 @@ class ShareViewController: UIViewController {
     @IBOutlet weak var aspectRatio: NSLayoutConstraint!
 
     var textDict: [String : Any] = ["text" : "placeholder"]
+    var imgDictArray: [[String : Any]] = []
+
     
     private var ratio: CGFloat = 1
     var imageType = ""
@@ -170,9 +172,9 @@ class ShareViewController: UIViewController {
                                  
                                  print("Item ===\(item)")
                                  print("Image Data=====. \(imgData))")
-                                 let dict: [String : Any] = [ "imageData" : imgData, "imageText" : "imported image"]
-                                 importedElementsArray.append(dict)
-                                 print("ImageData \(String(describing: savedata?.value(forKey: "imported")))")
+
+                                let imgDict: [String : Any] = [ "imageData" : imgData, "imageText" : "imported image"]
+                                imgDictArray.append(imgDict)
                                 
                                 let image = UIImage(data: imgData)!
                                 importedImages.append(image)
@@ -194,10 +196,12 @@ class ShareViewController: UIViewController {
         self.extensionContext?.completeRequest(returningItems: [], completionHandler:nil)
     }
     
-    func nextButton() {
+    func imageNextButtonPressed() {
+        importedElementsArray.append(contentsOf: imgDictArray)
+        print("ImageData \(String(describing: savedata?.value(forKey: "imported")))")
         self.openURL(url: NSURL(string:"containerapp://HomeVC")!)
         self.extensionContext?.completeRequest(returningItems: [], completionHandler:nil)
-
+        
     }
 
     func openURL(url: NSURL) -> Bool {

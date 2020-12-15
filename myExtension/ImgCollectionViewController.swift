@@ -17,7 +17,7 @@ class ImgCollectionViewController: UIViewController, UICollectionViewDataSource,
     }
     
     @IBAction func nextAction(_ sender: Any) {
-        shareVC?.nextButton()
+        shareVC?.imageNextButtonPressed()
     }
     
     var shareVC : ShareViewController?
