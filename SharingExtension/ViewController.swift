@@ -53,7 +53,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // text or image
 
         if (importedElement["text"] != nil)  {
-            cell.myImageView.image = UIImage()
             cell.myLabel.text = importedElement.value(forKey: "text")as? String
         } else {
             let imageData = importedElement.value(forKey: "imageData")as! Data
