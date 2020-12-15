@@ -23,13 +23,15 @@ class ImgCollectionViewController: UIViewController, UICollectionViewDataSource,
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        3
+        5
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath as IndexPath)
-        let image = UIImage(systemName: "info.circle")
-        cell.layer.contents = image!.cgImage
+        let image = #imageLiteral(resourceName: "sampleImage.jpeg")
+        cell.layer.cornerRadius = 10
+        cell.layer.masksToBounds = true
+        cell.layer.contents = image.cgImage
         return cell
     }
 

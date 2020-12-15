@@ -5,7 +5,7 @@ import UIKit
 class ShareViewController: UIViewController {
    
     
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var containerView: UIView!
     
     var imageType = ""
     var textType = "public.text"
@@ -29,7 +29,9 @@ class ShareViewController: UIViewController {
 
         override func viewDidLoad() {
             super.viewDidLoad()
- 
+          
+            containerView.layer.cornerRadius = 15
+            containerView.layer.masksToBounds = true
             // https://stackoverflow.com/questions/17041669/creating-a-blurring-overlay-view/25706250
 
             // only apply the blur if the user hasn't disabled transparency effects
