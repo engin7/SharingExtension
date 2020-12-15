@@ -8,13 +8,24 @@
 import UIKit
   
 class ImgCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
-    
-
+     
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    @IBAction func cancelAction(_ sender: Any) {
+        shareVC?.extensionContext?.completeRequest(returningItems: [], completionHandler:nil)
+
+    }
+    
+    @IBAction func nextAction(_ sender: Any) {
+        shareVC?.nextButton()
+    }
+    
+    var shareVC : ShareViewController?
     var imageSet: [UIImage] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        shareVC = self.parent?.parent as? ShareViewController
 //        collectionView.isHidden = true
         // Do any additional setup after loading the view.
     }

@@ -93,8 +93,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="CircleCare" id="syB-PK-m2C">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="9x2-nR-S2O"/>
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="8f1-L4-aUy"/>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="9x2-nR-S2O">
+                            <connections>
+                                <action selector="cancelAction:" destination="H8F-6S-u7V" id="vN0-XK-qBu"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="8f1-L4-aUy">
+                            <connections>
+                                <action selector="nextAction:" destination="H8F-6S-u7V" id="08n-fv-LVe"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="H2g-zX-u8r" id="zgq-ed-JBf"/>

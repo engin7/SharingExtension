@@ -66,7 +66,44 @@ class ShareViewController: UIViewController {
 
         }
     }
-     
+    
+    
+    func processText() {
+        
+//        if itemProvider.hasItemConformingToTypeIdentifier(textType) {
+//
+//                print("importing text")
+//
+//            itemProvider.loadItem(forTypeIdentifier: textType, options: nil, completionHandler: { [self] (item, error) in
+//
+//                    print("Text item ===\(item)")
+//
+//                    let dict: [String : Any] = ["text" :  item]
+//                    importedElementsArray.append(dict)
+//
+//                    print("TextData \(String(describing: savedata?.value(forKey: "imported")))")
+//
+//                })
+//        } else if itemProvider.hasItemConformingToTypeIdentifier(urlType) {
+//
+//            itemProvider.loadItem(forTypeIdentifier: urlType, options: nil, completionHandler: { [self] (item, error) in
+//
+//                let urlItem = item as! URL
+//                let urlItemString = urlItem.absoluteString
+//
+//                    print("URL item ===\(item)")
+//
+//                let dict: [String : Any] = ["text" :  urlItemString]
+//                    importedElementsArray.append(dict)
+//
+//                    print("URLData \(String(describing: savedata?.value(forKey: "imported")))")
+//
+//                })
+//
+//        }
+        
+    }
+    
     func sharingPost( finished: @escaping () -> Void) {
        
              print("In Did Post")
@@ -77,45 +114,13 @@ class ShareViewController: UIViewController {
                          print("item.attachments!======&gt;&gt;&gt; \(ele as! NSItemProvider)")
                          let itemProvider = ele as! NSItemProvider
                          print(itemProvider)
-
-                        if itemProvider.hasItemConformingToTypeIdentifier(textType) {
-                        
-                                print("importing text")
-                        
-                            itemProvider.loadItem(forTypeIdentifier: textType, options: nil, completionHandler: { [self] (item, error) in
-                                   
-                                    print("Text item ===\(item)")
-                                    
-                                    let dict: [String : Any] = ["text" :  item]
-                                    importedElementsArray.append(dict)
-                                    
-                                    print("TextData \(String(describing: savedata?.value(forKey: "imported")))")
-
-                                })
-                        } else if itemProvider.hasItemConformingToTypeIdentifier(urlType) {
-                            
-                            itemProvider.loadItem(forTypeIdentifier: urlType, options: nil, completionHandler: { [self] (item, error) in
-                                   
-                                let urlItem = item as! URL
-                                let urlItemString = urlItem.absoluteString
-                                
-                                    print("URL item ===\(item)")
-                                    
-                                let dict: [String : Any] = ["text" :  urlItemString]
-                                    importedElementsArray.append(dict)
-                                    
-                                    print("URLData \(String(describing: savedata?.value(forKey: "imported")))")
-
-                                })
-                            
-                        } else {
-                        
+ 
                          if itemProvider.hasItemConformingToTypeIdentifier("public.jpeg"){
                             imageType = "public.jpeg"
-                         }
-                         if itemProvider.hasItemConformingToTypeIdentifier("public.png"){
+                         } else if itemProvider.hasItemConformingToTypeIdentifier("public.png"){
                             imageType = "public.png"
                          }
+                        
                          if itemProvider.hasItemConformingToTypeIdentifier(imageType){
                              print("True")
                             itemProvider.loadItem(forTypeIdentifier: imageType, options: nil, completionHandler: { [self] (item, error) in
@@ -130,7 +135,7 @@ class ShareViewController: UIViewController {
                                  
                                  print("Item ===\(item)")
                                  print("Image Data=====. \(imgData))")
-                                 let dict: [String : Any] = [ "imageData" : imgData, "imageText" : "images"]
+                                 let dict: [String : Any] = [ "imageData" : imgData, "imageText" : "imported image"]
                                  importedElementsArray.append(dict)
                                  print("ImageData \(String(describing: savedata?.value(forKey: "imported")))")
                                 
@@ -143,14 +148,10 @@ class ShareViewController: UIViewController {
                                 
                              })
                          }
-                         }
                      }
-                        
                  }
-                    
              }
-   
-
+  
     func nextButton() {
         self.openURL(url: NSURL(string:"containerapp://HomeVC")!)
        self.extensionContext?.completeRequest(returningItems: [], completionHandler:nil)
