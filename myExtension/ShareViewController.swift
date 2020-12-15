@@ -72,6 +72,7 @@ class ShareViewController: UIViewController {
              print("In Did Post")
         if let item = self.extensionContext?.inputItems[0] as? NSExtensionItem  {
                      print("Item \(item)")
+                    var flag = item.attachments!.count
                      for ele in item.attachments!{
                          print("item.attachments!======&gt;&gt;&gt; \(ele as! NSItemProvider)")
                          let itemProvider = ele as! NSItemProvider
@@ -135,7 +136,11 @@ class ShareViewController: UIViewController {
                                 
                                 let image = UIImage(data: imgData)!
                                 importedImages.append(image)
-                                finished()
+                                flag -= 1
+                                if flag == 0 {
+                                    finished()
+                                }
+                                
                              })
                          }
                          }
