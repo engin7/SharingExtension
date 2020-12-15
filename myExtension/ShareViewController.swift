@@ -5,7 +5,8 @@ import UIKit
 class ShareViewController: UIViewController {
     
     @IBOutlet weak var containerView: UIView!
-
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     var imageType = ""
     var textType = "public.text"
     var urlType = "public.url"
@@ -58,6 +59,8 @@ class ShareViewController: UIViewController {
             let imageVC : ImgCollectionViewController = self.children[0].children[0] as! ImgCollectionViewController
             imageVC.imageSet = importedImages
             DispatchQueue.main.async {
+                activityIndicator.stopAnimating()
+                activityIndicator.isHidden = true
                 imageVC.collectionView.reloadData()
             }
 
