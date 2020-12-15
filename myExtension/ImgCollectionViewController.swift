@@ -14,10 +14,11 @@ class ImgCollectionViewController: UIViewController, UICollectionViewDataSource,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+//        collectionView.isHidden = true
         // Do any additional setup after loading the view.
     }
     
+
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         imageSet.count
@@ -25,7 +26,7 @@ class ImgCollectionViewController: UIViewController, UICollectionViewDataSource,
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath as IndexPath)
-        let image = #imageLiteral(resourceName: "sampleImage.jpeg")
+        let image = imageSet[indexPath.row]
         cell.layer.cornerRadius = 10
         cell.layer.masksToBounds = true
         cell.layer.contents = image.cgImage

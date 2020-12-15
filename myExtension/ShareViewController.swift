@@ -48,13 +48,20 @@ class ShareViewController: UIViewController {
                 view.backgroundColor = .black
             }
             // Do any additional setup after loading the view.
-            sharingPost()
+            sharingPost { [self] in
+                // reload
+                imageSet = importedImages
+                 
+            }
+            
         }
      
-      func sharingPost() {
+     
+
+    func sharingPost( finished: @escaping () -> Void) {
        
              print("In Did Post")
-                 if let item = self.extensionContext?.inputItems[0] as? NSExtensionItem {
+        if let item = self.extensionContext?.inputItems[0] as? NSExtensionItem  {
                      print("Item \(item)")
                      for ele in item.attachments!{
                          print("item.attachments!======&gt;&gt;&gt; \(ele as! NSItemProvider)")
@@ -110,29 +117,23 @@ class ShareViewController: UIViewController {
                                  if let img = item as? UIImage{
                                     imgData = img.pngData()
                                  }
-                                
-                                
-                                let image = UIImage(data: imgData)!
-                                importedImages.append(image)
-                                
+                                 
                                  print("Item ===\(item)")
                                  print("Image Data=====. \(imgData))")
                                  let dict: [String : Any] = [ "imageData" : imgData, "imageText" : "images"]
                                  importedElementsArray.append(dict)
                                  print("ImageData \(String(describing: savedata?.value(forKey: "imported")))")
+                                
+                                let image = UIImage(data: imgData)!
+                                importedImages.append(image)
+                                finished()
                              })
                          }
                          }
                      }
-                    // reload
-                    let image = #imageLiteral(resourceName: "sampleImage.jpeg")
-                    importedImages.append(image)
-                    imageSet = importedImages
-                    ImgCollectionViewController()
-               
-
+                        
                  }
-             
+                    
              }
    
 
