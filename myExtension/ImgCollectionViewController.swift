@@ -11,7 +11,8 @@ class ImgCollectionViewController: UIViewController, UICollectionViewDataSource,
     
 
     @IBOutlet weak var collectionView: UICollectionView!
-    
+    var imageSet: [UIImage] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
 //        collectionView.isHidden = true

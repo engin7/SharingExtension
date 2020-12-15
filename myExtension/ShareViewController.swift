@@ -23,14 +23,13 @@ class ShareViewController: UIViewController {
             savedata?.synchronize()
         }
     }
+ 
     
-    // ShareViewController continued from Step 1.
-
         override func viewDidLoad() {
             super.viewDidLoad()
-          
             containerView.layer.cornerRadius = 15
             containerView.layer.masksToBounds = true
+
             // https://stackoverflow.com/questions/17041669/creating-a-blurring-overlay-view/25706250
 
             // only apply the blur if the user hasn't disabled transparency effects
@@ -48,16 +47,23 @@ class ShareViewController: UIViewController {
                 view.backgroundColor = .black
             }
             // Do any additional setup after loading the view.
-            sharingPost { [self] in
-                // reload
-                imageSet = importedImages
-                 
-            }
+            
             
         }
      
-     
+    override func viewWillAppear(_ animated: Bool) {
+        sharingPost { [self] in
+            // reload
+              
+            let imageVC : ImgCollectionViewController = self.children[0].children[0] as! ImgCollectionViewController
+            imageVC.imageSet = importedImages
+            DispatchQueue.main.async {
+                imageVC.collectionView.reloadData()
+            }
 
+        }
+    }
+     
     func sharingPost( finished: @escaping () -> Void) {
        
              print("In Did Post")
