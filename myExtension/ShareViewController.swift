@@ -1,12 +1,11 @@
 import UIKit
  
 
-@available(iOSApplicationExtension 13.0, *)
+ 
 class ShareViewController: UIViewController {
-   
     
     @IBOutlet weak var containerView: UIView!
-    
+
     var imageType = ""
     var textType = "public.text"
     var urlType = "public.url"
@@ -49,23 +48,9 @@ class ShareViewController: UIViewController {
                 view.backgroundColor = .black
             }
             // Do any additional setup after loading the view.
-            pushVC()
+            sharingPost()
         }
-    
-    func pushVC() {
-        
-        
-        guard let vc = UIStoryboard(name: "MainInterface", bundle: nil).instantiateViewController(withIdentifier: "ImgCollectionVC") as? ImgCollectionViewController else {
-                                fatalError("ImgCollectionVC could not be initialized with storyboard")
-                            }
-        
-        let image = UIImage(systemName: "info.circle")
-        importedImages.append(image!)
-        vc.imageSet = importedImages
-        navigationController?.pushViewController(vc, animated: true)
-
-        
-    }
+     
       func sharingPost() {
        
              print("In Did Post")
@@ -139,10 +124,13 @@ class ShareViewController: UIViewController {
                          }
                          }
                      }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
-                        self.pushVC()
+                    // reload
+                    let image = #imageLiteral(resourceName: "sampleImage.jpeg")
+                    importedImages.append(image)
+                    imageSet = importedImages
+                    ImgCollectionViewController()
+               
 
-                    }
                  }
              
              }
